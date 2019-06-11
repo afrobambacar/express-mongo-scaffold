@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "10"
+install:
+  - npm install
+before_script:
+  - npm run lint
+script:
+  - npm test
+after_success:
+  - npm run postcoverage
+cache: npm

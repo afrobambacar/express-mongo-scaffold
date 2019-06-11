@@ -1,0 +1,27 @@
+version: "3"
+services:
+  api:
+    image: rest-mongo:latest
+    container_name: rest-mongo
+    command: npm run dev
+    volumes:
+      - ./src:/home/node/api/src
+      - ./package.json:/home/node/api/package.json
+      - ./.env:/home/node/api/.env
+      - ./.env.example:/home/node/api/.env.example
+      - ./.babelrc:/home/node/api/.babelrc
+      - ./.eslintrc:/home/node/api/.eslintrc
+    ports:
+      - "9000:9000"
+    environment:
+      NODE_ENV: development
+      PORT: 9000
+    tty: true
+
+  db: 
+    image: mongo:3-jessie
+    container_name: mongo
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    ports:
+      - "27017:27017"
+      
