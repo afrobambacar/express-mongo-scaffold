@@ -68,19 +68,6 @@ src/
 └─ index.js
 ```
 
-### npm test
-
-자신이 작성한 코드가 원하는 대로 응답하는지 확인하는 방법은 여러가지가 있지만, 테스트 케이스를 작성하는게 가장 좋습니다. Postman 쓰지 마시고 테스트 케이스를 작성하세요. `npm test` 명령어를 이용하여 확인할 수 있습니다. 특정 파일을 테스트 하고 싶으면 아래와 같은 명령어를 사용하세요.
-
-사용 예제
-```
-# 하위 폴더까지 테스트
-npm test api/user
-
-# 특정 파일 테스트
-npm test api/user/index.test.js
-```
-
 ## Scripts
 
 ### npm run dev
