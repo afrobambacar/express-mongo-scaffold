@@ -11,7 +11,7 @@ const requireProcessEnv = (name) => {
 }
 
 /* istanbul ignore next */
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   const dotenv = require('dotenv-safe')
   dotenv.load({
     path: path.join(__dirname, '../.env'),
@@ -28,9 +28,6 @@ const config = {
     apiRoot: process.env.API_ROOT || '',
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
-    aws: {
-      bucket: ''
-    },
     mongo: {
       uri: requireProcessEnv('MONGO_URI'),
       options: {
@@ -44,17 +41,8 @@ const config = {
       debug: false,
     },
   },
-  test: {
-    aws: {
-      accessKeyId: requireProcessEnv('ACCESS_KEY_ID'),
-      secretAccessKey: requireProcessEnv('SECRET_ACCESS_KEY')
-    }
-  },
+  test: {},
   development: {
-    aws: {
-      accessKeyId: requireProcessEnv('ACCESS_KEY_ID'),
-      secretAccessKey: requireProcessEnv('SECRET_ACCESS_KEY')
-    },
     mongooseOptions: {
       debug: true,
     },
