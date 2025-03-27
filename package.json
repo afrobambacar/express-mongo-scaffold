@@ -63,7 +63,7 @@
     "cors": "^2.8.4",
     "express": "^4.20.0",
     "file-type": "^10.11.0",
-    "firebase-admin": "^7.4.0",
+    "firebase-admin": "^13.2.0",
     "image-data-uri": "^2.0.0",
     "jsend": "^1.0.2",
     "jsonwebtoken": "^8.5.1",
