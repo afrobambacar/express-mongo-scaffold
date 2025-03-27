@@ -4,8 +4,9 @@ import merge from 'lodash/merge'
 
 /* istanbul ignore next */
 const requireProcessEnv = (name) => {
-  if (!process.env[name]) {
-    throw new Error('You must set the ' + name + ' environment variable')
+  if (process.env === 'development' && !process.env[name]) {
+    console.log('You must set the ' + name + ' environment variable')
+    return ''
   }
   return process.env[name]
 }
@@ -14,8 +15,9 @@ const requireProcessEnv = (name) => {
 if (process.env.NODE_ENV === 'development') {
   const dotenv = require('dotenv-safe')
   dotenv.load({
+    allowEmptyValues: true,
     path: path.join(__dirname, '../.env'),
-    sample: path.join(__dirname, '../.env.example')
+    sample: path.join(__dirname, '../.env.example'),
   })
 }
 
@@ -26,8 +28,8 @@ const config = {
     port: process.env.PORT || 9000,
     ip: process.env.IP || '0.0.0.0',
     apiRoot: process.env.API_ROOT || '',
-    masterKey: requireProcessEnv('MASTER_KEY'),
-    jwtSecret: requireProcessEnv('JWT_SECRET'),
+    masterKey: requireProcessEnv('MASTER_KEY') || 'masterKey',
+    jwtSecret: requireProcessEnv('JWT_SECRET') || 'jwtSecret',
     mongo: {
       uri: requireProcessEnv('MONGO_URI'),
       options: {

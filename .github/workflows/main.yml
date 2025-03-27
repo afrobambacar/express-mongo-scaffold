@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: Test & Notification
+name: Test
 
 jobs:
   test:
