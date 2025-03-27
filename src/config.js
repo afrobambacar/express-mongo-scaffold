@@ -32,15 +32,17 @@ const config = {
       bucket: ''
     },
     mongo: {
+      uri: requireProcessEnv('MONGO_URI'),
       options: {
-        useFindAndModify: false,
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        db: {
-          safe: true
-        }
-      }
-    }
+        autoIndex: true,
+        connectTimeoutMS: 10000,
+        socketTimeoutMS: 45000,
+        family: 4,
+      },
+    },
+    mongooseOptions: {
+      debug: false,
+    },
   },
   test: {
     aws: {
@@ -53,18 +55,11 @@ const config = {
       accessKeyId: requireProcessEnv('ACCESS_KEY_ID'),
       secretAccessKey: requireProcessEnv('SECRET_ACCESS_KEY')
     },
-    mongo: {
-      uri: requireProcessEnv('MONGO_URI'),
-      options: {
-        debug: true
-      }
-    }
+    mongooseOptions: {
+      debug: true,
+    },
   },
-  production: {
-    mongo: {
-      uri: requireProcessEnv('MONGO_URI')
-    }
-  }
+  production: {}
 }
 
 module.exports = merge(config.all, config[config.all.env])

@@ -1,11 +1,6 @@
-# rest-mongo
+# express-mongo-scaffold
 
-[![Build Status](https://travis-ci.com/seoulstore/sinsa.svg?token=syzApJ6zq5vRUmtrKbsq&branch=dev)](https://travis-ci.com/seoulstore/sinsa)
-[![codecov](https://codecov.io/gh/seoulstore/sinsa/branch/dev/graph/badge.svg?token=i49Qckge6V)](https://codecov.io/gh/seoulstore/sinsa)
-
-MongoDB + Express.js 구성의 API 애플리케이션, [generator-rest](https://github.com/diegohaz/generator-rest)를 이용했습니다.
-
-API 문서는 [Wiki](https://github.com/seoulstore/sinsa/wiki)에 있습니다.
+MongoDB + Express.js 구성의 API 애플리케이션
 
 ## Commands
 
@@ -25,14 +20,14 @@ npm run docs # generate API docs
 
 로컬에서 띄우기 위해 준비해야 할 것은 다음과 같습니다.
 
-* NodeJS >= 10.x.x
+* NodeJS >= 20.x.x
 * _Docker Image_
 * _docker-compose.yml_ 파일
 * _.env_ 파일
 
 도커 이미지 빌드
 ```
-docker build . -t sinsa:latest
+docker build . -t api:latest
 ```
 
 _docker-compose.yml_ 파일은 _docker-compose.example.yml_ 파일을 복사하세요. 
@@ -48,7 +43,7 @@ cp .env.example .env
 
 이제 준비가 되었습니다. 다음 명령어를 타이핑 하세요. 
 ```
-docker-compose up
+docker compose up
 ```
 
 복사한 docker-compose.yml 파일에는 MongoDB가 _link_ 되어 있습니다. 그리고 _.env_ 파일에는 _MONGO_URI_ 환경변수가 MongoDB 컨테이너 주소를 가리킵니다. 만약 로컬에서 다른 MongoDB를 연결하려면 위 환경변수를 변경하세요. 

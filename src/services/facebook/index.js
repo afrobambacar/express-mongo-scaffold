@@ -1,17 +1,22 @@
-import request from 'request-promise'
+import axios from 'axios'
 
 export const getUser = (accessToken) =>
-  request({
-    uri: 'https://graph.facebook.com/me',
-    json: true,
-    qs: {
+  axios({
+    url: 'https://graph.facebook.com/me',
+    method: 'get',
+    data: {
       access_token: accessToken,
       fields: 'id, name, email, picture'
+    },
+  })
+  .then(({ data }) => {
+    const { id, name, email, picture } = data
+    return {
+      service: 'facebook',
+      picture: picture.data.url,
+      id,
+      name,
+      email
     }
-  }).then(({ id, name, email, picture }) => ({
-    service: 'facebook',
-    picture: picture.data.url,
-    id,
-    name,
-    email
-  }))
+  })
+  

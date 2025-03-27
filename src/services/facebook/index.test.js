@@ -9,7 +9,10 @@ it('parses facebook user', async () => {
     picture: { data: { url: 'test.jpg' } }
   }
 
-  nock('https://graph.facebook.com').get('/me').query(true).reply(200, fbUser)
+  nock('https://graph.facebook.com')
+    .get('/me')
+    .query(true)
+    .reply(200, fbUser)
 
   const data = await facebook.getUser('123')
   expect(data.service).toBe('facebook')

@@ -41,7 +41,7 @@ export const create = ({ bodymen: { body } }, res, next) =>
     })
     .catch((err) => {
       /* istanbul ignore else */
-      if (err.name === 'MongoError' && err.code === 11000) {
+      if (err.name === 'MongoServerError' && err.code === 11000) {
         res.status(409).jsend.fail({
           valid: false,
           param: 'email',
