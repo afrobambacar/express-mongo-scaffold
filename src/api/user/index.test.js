@@ -1,8 +1,9 @@
 import request from 'supertest'
-import { masterKey, apiRoot } from '../../config'
-import { signSync } from '../../services/jwt'
-import express from '../../services/express'
-import routes, { User } from '.'
+import { masterKey, apiRoot } from 'config'
+import { signSync } from 'services/jwt'
+import express from 'services/express'
+import User from 'models/user'
+import routes from '.'
 
 const app = () => express(apiRoot, routes)
 

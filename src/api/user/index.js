@@ -3,8 +3,7 @@ import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { password as passwordAuth, master, token } from '../../services/passport'
 import { index, lookup, showMe, show, create, update, updatePassword, destroy } from './controller'
-import { schema } from './model'
-export User, { schema } from './model'
+import { schema } from 'models/user'
 
 const router = new Router()
 const { email, password, username, picture, role } = schema.tree
@@ -30,7 +29,7 @@ router.get('/',
  * @apiName Email lookup
  * @apiGroup User
  */
-router.get('/lookup', 
+router.get('/lookup',
   master(),
   lookup)
 

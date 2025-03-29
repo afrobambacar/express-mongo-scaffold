@@ -1,6 +1,6 @@
-import { success, notFound } from '../../services/response/'
-import { User } from '.'
-import { sign } from '../../services/jwt'
+import { success, notFound } from 'services/response'
+import User from 'models/user'
+import { sign } from 'services/jwt'
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   User.countDocuments(query)
@@ -13,11 +13,11 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
     .then(success(res))
     .catch(next)
 
-export const lookup = ({ query: { email, username }}, res, next) => {
-  const condition = email ? { email } : { username };
+export const lookup = ({ query: { email, username } }, res, next) => {
+  const condition = email ? { email } : { username }
 
   return User.findOne(condition)
-    .then(user => user ? false : true)
+    .then(user => !user)
     .then(available => success(res)({ available, ...condition }))
     .catch(next)
 }
@@ -29,7 +29,7 @@ export const show = ({ params }, res, next) =>
     .then(success(res))
     .catch(next)
 
-export const showMe = ({ user }, res) => 
+export const showMe = ({ user }, res) =>
   res.jsend.success(user.view(true))
 
 export const create = ({ bodymen: { body } }, res, next) =>

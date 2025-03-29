@@ -7,20 +7,15 @@ Object.keys(mongooseOptions).forEach((key) => {
 })
 
 /* istanbul ignore next */
-mongoose.Types.ObjectId.prototype.view = function () {
-  return { id: this.toString() }
-}
-
-/* istanbul ignore next */
 mongoose.connection.on('connected', () => {
   if (env === 'test') return
-  console.log(chalk.magenta('mongodb has connected'))
+  console.log('mongodb has connected')
 })
 
 /* istanbul ignore next */
 mongoose.connection.on('disconnected', () => {
   if (env === 'test') return
-  console.log(chalk.magenta('mongodb has disconnected'))
+  console.log('mongodb has disconnected')
 })
 
 /* istanbul ignore next */

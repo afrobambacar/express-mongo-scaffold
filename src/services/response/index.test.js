@@ -14,13 +14,13 @@ describe('success', () => {
   it('responds with passed object and status 200', () => {
     expect(response.success(res)({ prop: 'value' })).toBeNull()
     expect(res.status).toBeCalledWith(200)
-    expect(res.json).toBeCalledWith({'data': {'prop': 'value'}, 'status': 'success'})
+    expect(res.json).toBeCalledWith({ data: { prop: 'value' }, status: 'success' })
   })
 
   it('responds with passed object and status 201', () => {
     expect(response.success(res, 201)({ prop: 'value' })).toBeNull()
     expect(res.status).toBeCalledWith(201)
-    expect(res.json).toBeCalledWith({'data': {'prop': 'value'}, 'status': 'success'})
+    expect(res.json).toBeCalledWith({ data: { prop: 'value' }, status: 'success' })
   })
 
   it('does not send any response when object has not been passed', () => {

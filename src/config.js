@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import path from 'path'
 import merge from 'lodash/merge'
 
@@ -17,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
   dotenv.load({
     allowEmptyValues: true,
     path: path.join(__dirname, '../.env'),
-    sample: path.join(__dirname, '../.env.example'),
+    sample: path.join(__dirname, '../.env.example')
   })
 }
 
@@ -36,18 +35,18 @@ const config = {
         autoIndex: true,
         connectTimeoutMS: 10000,
         socketTimeoutMS: 45000,
-        family: 4,
-      },
+        family: 4
+      }
     },
     mongooseOptions: {
-      debug: false,
-    },
+      debug: false
+    }
   },
   test: {},
   development: {
     mongooseOptions: {
-      debug: true,
-    },
+      debug: true
+    }
   },
   production: {}
 }

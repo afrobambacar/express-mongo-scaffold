@@ -61,7 +61,6 @@ src/
 │  ├─ facebook/
 │  ├─ mongoose/
 │  ├─ passport/
-│  ├─ sendgrid/
 │  └─ your-service/
 ├─ app.js
 ├─ config.js

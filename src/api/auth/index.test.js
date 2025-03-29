@@ -1,9 +1,8 @@
 import request from 'supertest'
 import { masterKey, apiRoot } from 'config'
-import { User } from 'api/user'
 import { verify } from 'services/jwt'
-import * as facebook from 'services/facebook'
 import express from 'services/express'
+import User from 'models/user'
 import routes from '.'
 
 const app = () => express(apiRoot, routes)
