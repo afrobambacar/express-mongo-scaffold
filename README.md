@@ -52,9 +52,7 @@ src/
 │  ├─ user/
 │  │  ├─ controller.js
 │  │  ├─ index.js
-│  │  ├─ index.test.js
-│  │  ├─ model.js
-│  │  └─ model.test.js
+│  │  └─ index.test.js
 │  └─ index.js
 ├─ services/
 │  ├─ express/
@@ -62,6 +60,10 @@ src/
 │  ├─ mongoose/
 │  ├─ passport/
 │  └─ your-service/
+├─ models/
+│  └─ user/
+│     ├─ index.js
+│     └─ index.test.js
 ├─ app.js
 ├─ config.js
 └─ index.js
@@ -88,7 +90,7 @@ npm test api/user
 npm test api/user/index.test.js
 ```
 
-### npm run lint & npm run fixlint
+### npm run lint & npm run lint:fix
 
 코드를 다른 사람과 공유하기 위해 커밋, 푸쉬 하기 전에 반드시 `lint`를 실행하세요. 물론 경험상 귀찮아 한다는 것을 저도 알기에 _husky_ 가 지키고 있습니다. _.huskyrc_ 파일을 확인하세요.
 
