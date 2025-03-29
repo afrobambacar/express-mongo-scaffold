@@ -1,18 +1,16 @@
 import { Router } from 'express'
-import image from './image'
-import device from './device'
-import message from './message'
+import auth from './auth'
+import user from './user'
 
 const router = new Router()
 
-router.use('/images', image)
-router.use('/devices', device)
-router.use('/messages', message)
+router.use('/auth', auth)
+router.use('/users', user)
 router.get('/', (req, res, next) => {
   res.status(200).json({
     status: 'success',
     data: {
-      message: 'hello sinsa'
+      message: 'hello world'
     }
   })
 })

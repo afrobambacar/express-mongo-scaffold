@@ -1,16 +1,14 @@
 version: "3"
 services:
   api:
-    image: rest-mongo:latest
-    container_name: rest-mongo
+    image: api:latest
+    container_name: api
     command: npm run dev
     volumes:
-      - ./src:/home/node/api/src
-      - ./package.json:/home/node/api/package.json
-      - ./.env:/home/node/api/.env
-      - ./.env.example:/home/node/api/.env.example
-      - ./.babelrc:/home/node/api/.babelrc
-      - ./.eslintrc:/home/node/api/.eslintrc
+      - ./src:/home/node/app/src
+      - ./package.json:/home/node/app/package.json
+      - ./.env:/home/node/app/.env
+      - ./.env.example:/home/node/app/.env.example
     ports:
       - "9000:9000"
     environment:
@@ -19,9 +17,13 @@ services:
     tty: true
 
   db: 
-    image: mongo:3-jessie
+    image: mongodb/mongodb-community-server:latest
     container_name: mongo
-    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    command: --quiet --logpath /dev/null 
     ports:
       - "27017:27017"
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=root
+      - MONGODB_INITDB_ROOT_PASSWORD=example
+      - MONGO_INITDB_DATABASE=api-dev
       
